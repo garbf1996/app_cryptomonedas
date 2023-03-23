@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useEffect, useState } from "react";
 import { StyleSheet, Image, View, ActivityIndicator } from "react-native";
 import Formulario from "./components/Formulario";

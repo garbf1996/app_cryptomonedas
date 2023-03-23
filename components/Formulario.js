@@ -17,16 +17,19 @@ const Formulario = ({
   setCriptomoneda,
   setConsultarAPI,
 }) => {
+  //state del listado de criptomonedas
   const [criptomonedas, setCriptomonedas] = useState([]);
 
+  //octener la moneda
   const getMoneda = (moneda) => {
     setMoneda(moneda);
   };
 
+  //octener la criptomoneda
   const getCriptomoneda = (criptomoneda) => {
     setCriptomoneda(criptomoneda);
   };
-
+  //verificar que el usuario llene ambos campos
   const cotizarPrecio = () => {
     if (moneda.trim() === "" || criptomoneda.trim() === "") {
       mostarAlerta();
@@ -35,14 +38,16 @@ const Formulario = ({
     setConsultarAPI(true);
   };
 
+  //muestra una alerta si falla la validacion
   const mostarAlerta = () => {
     Alert.alert("Error...", "Ambos campos son obligatorios", [{ text: "OK" }]);
   };
 
+  //llamado a la api
   useEffect(() => {
     const consultarAPI = async () => {
       const url =
-        "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=USD";
+        "https://min-api.cryptocompare.com/data/top/mktcapfull?limit=15&tsym=USD";
       const resultado = await axios.get(url);
       setCriptomonedas(resultado.data.Data);
     };
